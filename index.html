@@ -1,0 +1,1442 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Autimagic | AI-Powered Autism Therapy</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#6C63FF',
+                        secondary: '#4FD1C5',
+                        accent: '#F6AD55',
+                        light: '#F7FAFC',
+                        dark: '#2D3748',
+                        pastelBlue: '#BEE3F8',
+                        pastelGreen: '#C6F6D5',
+                        pastelPurple: '#E9D8FD',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        .hero-gradient {
+            background: linear-gradient(135deg, #BEE3F8 0%, #E9D8FD 50%, #C6F6D5 100%);
+        }
+
+        .wave-shape {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            overflow: hidden;
+            line-height: 0;
+        }
+
+        .wave-shape svg {
+            position: relative;
+            display: block;
+            width: calc(100% + 1.3px);
+            height: 150px;
+        }
+
+        .wave-shape .shape-fill {
+            fill: #FFFFFF;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        .timeline-item:not(:last-child):after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: -50px;
+            width: 2px;
+            height: 50px;
+            background-color: #4FD1C5;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+
+            100% {
+                transform: translateY(0px);
+            }
+        }
+
+        .floating {
+            animation: float 3s ease-in-out infinite;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-sm fixed w-full z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0 flex items-center">
+                        <i class="fas fa-magic text-primary text-2xl mr-2"></i>
+                        <span class="text-xl font-bold text-dark">Autimagic</span>
+                    </div>
+                </div>
+                <div class="hidden md:ml-6 md:flex md:items-center md:space-x-8">
+                    <a href="#about" class="text-gray-500 hover:text-primary px-3 py-2 text-sm font-medium">About</a>
+                    <a href="#solution"
+                        class="text-gray-500 hover:text-primary px-3 py-2 text-sm font-medium">Solution</a>
+                    <a href="#benefits"
+                        class="text-gray-500 hover:text-primary px-3 py-2 text-sm font-medium">Benefits</a>
+                    <a href="#demo" class="text-gray-500 hover:text-primary px-3 py-2 text-sm font-medium">Demo</a>
+                    <a href="#contact"
+                        class="bg-primary text-white px-4 py-2 rounded-full text-sm font-medium hover:bg-opacity-90 transition">Contact
+                        Us</a>
+                </div>
+                <div class="-mr-2 flex items-center md:hidden">
+                    <button type="button"
+                        class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary"
+                        aria-controls="mobile-menu" aria-expanded="false" id="mobile-menu-button">
+                        <span class="sr-only">Open main menu</span>
+                        <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile menu -->
+        <div class="hidden md:hidden" id="mobile-menu">
+            <div class="pt-2 pb-3 space-y-1">
+                <a href="#about"
+                    class="block px-3 py-2 text-base font-medium text-gray-500 hover:text-primary hover:bg-gray-50">About</a>
+                <a href="#solution"
+                    class="block px-3 py-2 text-base font-medium text-gray-500 hover:text-primary hover:bg-gray-50">Solution</a>
+                <a href="#benefits"
+                    class="block px-3 py-2 text-base font-medium text-gray-500 hover:text-primary hover:bg-gray-50">Benefits</a>
+                <a href="#demo"
+                    class="block px-3 py-2 text-base font-medium text-gray-500 hover:text-primary hover:bg-gray-50">Demo</a>
+                <a href="#contact" class="block px-3 py-2 text-base font-medium text-primary">Contact Us</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-gradient pt-24 pb-32 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="lg:grid lg:grid-cols-2 lg:gap-8 items-center">
+                <div class="mt-12 sm:mt-16 lg:mt-0">
+                    <div class="text-center lg:text-left">
+                        <h1 class="text-4xl tracking-tight font-extrabold text-dark sm:text-5xl md:text-6xl">
+                            <span class="block">Making autism therapy</span>
+                            <span class="block text-primary">magical, data-driven & affordable</span>
+                        </h1>
+                        <p
+                            class="mt-3 text-base text-gray-600 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">
+                            Our AI-powered smart bongos system brings effective therapy to children with autism at
+                            85-90% lower cost than traditional methods.
+                        </p>
+                        <div class="mt-8 sm:max-w-lg sm:mx-auto sm:text-center lg:text-left lg:mx-0">
+                            <div class="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-3">
+                                <a href="#demo"
+                                    class="flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-full text-white bg-primary hover:bg-opacity-90 md:py-4 md:text-lg md:px-10 transition">
+                                    See How It Works
+                                </a>
+                                <a href="#contact"
+                                    class="flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-full text-primary bg-white hover:bg-gray-50 md:py-4 md:text-lg md:px-10 transition">
+                                    Book a Demo
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative mt-12 sm:mt-16 lg:mt-0">
+                    <div class="relative mx-auto w-full rounded-lg shadow-lg overflow-hidden floating">
+                        <div class="absolute inset-0 bg-gradient-to-br from-primary to-secondary opacity-30 rounded-lg">
+                        </div>
+                        <img class="relative w-full object-cover"
+                            src="https://images.unsplash.com/photo-1544717305-2787409b8095?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1476&q=80"
+                            alt="Child using Autimagic smart bongos">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- <div class="wave-shape">
+            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120"
+                preserveAspectRatio="none">
+                <path
+                    d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"
+                    class="shape-fill"></path>
+            </svg>
+        </div> -->
+    </section>
+
+    <!-- Stats Section -->
+    <section class="bg-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 gap-8 md:grid-cols-4">
+                <div class="text-center">
+                    <div class="text-4xl font-bold text-primary">85%</div>
+                    <div class="text-gray-600 mt-2">Cost Savings</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-4xl font-bold text-secondary">10,000+</div>
+                    <div class="text-gray-600 mt-2">Children Impacted</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-4xl font-bold text-accent">94%</div>
+                    <div class="text-gray-600 mt-2">Engagement Rate</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-4xl font-bold text-purple-500">50+</div>
+                    <div class="text-gray-600 mt-2">Therapy Centers</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="lg:text-center">
+                <h2 class="text-base text-primary font-semibold tracking-wide uppercase">About Autimagic</h2>
+                <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-dark sm:text-4xl">
+                    Closing the autism therapy gap
+                </p>
+                <p class="mt-4 max-w-2xl text-xl text-gray-600 lg:mx-auto">
+                    Founded by parents and therapists who saw firsthand the challenges of accessing affordable,
+                    effective autism therapy.
+                </p>
+            </div>
+
+            <div class="mt-16">
+                <div class="lg:grid lg:grid-cols-2 lg:gap-8">
+                    <div class="relative">
+                        <div class="relative overflow-hidden rounded-lg shadow-lg">
+                            <img class="w-full h-auto"
+                                src="https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+                                alt="Autism therapy session">
+                            <div class="absolute inset-0 bg-gradient-to-t from-dark opacity-70"></div>
+                            <div class="absolute bottom-0 left-0 p-6">
+                                <h3 class="text-xl font-bold text-white">Our Mission</h3>
+                                <p class="mt-2 text-gray-200">To make effective autism therapy accessible to every
+                                    child, regardless of location or income.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-10 lg:mt-0">
+                        <div class="space-y-10">
+                            <div>
+                                <div class="flex items-center">
+                                    <div class="flex-shrink-0 bg-primary bg-opacity-10 p-3 rounded-full">
+                                        <i class="fas fa-bullseye text-primary text-xl"></i>
+                                    </div>
+                                    <div class="ml-4">
+                                        <h3 class="text-lg leading-6 font-medium text-dark">Vision for 2028</h3>
+                                        <p class="mt-2 text-gray-600">
+                                            Reach 100,000+ children across India and expand to 5 new countries, making
+                                            Autimagic the standard for affordable autism therapy.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex items-center">
+                                    <div class="flex-shrink-0 bg-secondary bg-opacity-10 p-3 rounded-full">
+                                        <i class="fas fa-lightbulb text-secondary text-xl"></i>
+                                    </div>
+                                    <div class="ml-4">
+                                        <h3 class="text-lg leading-6 font-medium text-dark">The Inspiration</h3>
+                                        <p class="mt-2 text-gray-600">
+                                            After struggling to find affordable therapy for their own child, our
+                                            founders combined their expertise in pediatric therapy and AI technology to
+                                            create a better solution.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex items-center">
+                                    <div class="flex-shrink-0 bg-accent bg-opacity-10 p-3 rounded-full">
+                                        <i class="fas fa-award text-accent text-xl"></i>
+                                    </div>
+                                    <div class="ml-4">
+                                        <h3 class="text-lg leading-6 font-medium text-dark">Recognized Innovation</h3>
+                                        <p class="mt-2 text-gray-600">
+                                            Winner of the 2023 National HealthTech Innovation Award and recognized by
+                                            the Autism Society of India for our groundbreaking approach.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution Section -->
+    <section id="solution" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="lg:text-center">
+                <h2 class="text-base text-primary font-semibold tracking-wide uppercase">The Solution</h2>
+                <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-dark sm:text-4xl">
+                    AI-Powered Smart Bongos Therapy System
+                </p>
+                <p class="mt-4 max-w-2xl text-xl text-gray-600 lg:mx-auto">
+                    Combining sensory play with cutting-edge technology to create engaging, effective therapy.
+                </p>
+            </div>
+
+            <div class="mt-16">
+                <div class="space-y-16">
+                    <div class="lg:grid lg:grid-cols-2 lg:gap-8 lg:items-center">
+                        <div class="relative">
+                            <div class="relative overflow-hidden rounded-lg shadow-xl">
+                                <img class="w-full h-auto"
+                                    src="https://images.unsplash.com/photo-1571260899304-42dd47f7a23c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+                                    alt="Autimagic smart bongos device">
+                                <div class="absolute inset-0 bg-gradient-to-r from-primary to-secondary opacity-20">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-10 lg:mt-0">
+                            <h3 class="text-2xl font-bold text-dark">Smart Bongos Instrument</h3>
+                            <p class="mt-4 text-gray-600">
+                                Our patented bongos design features integrated force sensors that capture precise
+                                interaction data while providing a familiar, engaging sensory experience for children.
+                            </p>
+                            <div class="mt-6 grid grid-cols-2 gap-4">
+                                <div class="flex items-start">
+                                    <div class="flex-shrink-0">
+                                        <div
+                                            class="flex items-center justify-center h-8 w-8 rounded-full bg-primary bg-opacity-10">
+                                            <i class="fas fa-bolt text-primary"></i>
+                                        </div>
+                                    </div>
+                                    <div class="ml-3">
+                                        <p class="text-sm font-medium text-dark">Force Sensors</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start">
+                                    <div class="flex-shrink-0">
+                                        <div
+                                            class="flex items-center justify-center h-8 w-8 rounded-full bg-secondary bg-opacity-10">
+                                            <i class="fas fa-lightbulb text-secondary"></i>
+                                        </div>
+                                    </div>
+                                    <div class="ml-3">
+                                        <p class="text-sm font-medium text-dark">LED Feedback</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start">
+                                    <div class="flex-shrink-0">
+                                        <div
+                                            class="flex items-center justify-center h-8 w-8 rounded-full bg-accent bg-opacity-10">
+                                            <i class="fas fa-wifi text-accent"></i>
+                                        </div>
+                                    </div>
+                                    <div class="ml-3">
+                                        <p class="text-sm font-medium text-dark">Wireless Connectivity</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start">
+                                    <div class="flex-shrink-0">
+                                        <div
+                                            class="flex items-center justify-center h-8 w-8 rounded-full bg-purple-500 bg-opacity-10">
+                                            <i class="fas fa-shield-alt text-purple-500"></i>
+                                        </div>
+                                    </div>
+                                    <div class="ml-3">
+                                        <p class="text-sm font-medium text-dark">Durable Design</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="lg:grid lg:grid-cols-2 lg:gap-8 lg:items-center">
+                        <div class="lg:order-last">
+                            <div class="relative overflow-hidden rounded-lg shadow-xl">
+                                <img class="w-full h-auto"
+                                    src="https://images.unsplash.com/photo-1555774698-0f77e70ac5f5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+                                    alt="Autimagic mobile app interface">
+                                <div class="absolute inset-0 bg-gradient-to-l from-primary to-secondary opacity-20">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-10 lg:mt-0">
+                            <h3 class="text-2xl font-bold text-dark">Mobile App & Cloud Analytics (under development)
+                            </h3>
+                            <p class="mt-4 text-gray-600">
+                                The companion app provides gamified therapy sessions while our secure cloud platform
+                                delivers real-time progress tracking and personalized recommendations.
+                            </p>
+                            <div class="mt-6">
+                                <div class="flex items-start">
+                                    <div class="flex-shrink-0">
+                                        <div
+                                            class="flex items-center justify-center h-10 w-10 rounded-full bg-primary bg-opacity-10">
+                                            <i class="fas fa-robot text-primary text-lg"></i>
+                                        </div>
+                                    </div>
+                                    <div class="ml-4">
+                                        <p class="text-base font-medium text-dark">AI-Powered Personalization</p>
+                                        <p class="mt-1 text-sm text-gray-600">
+                                            Our algorithm adapts difficulty levels and therapy goals based on the
+                                            child's progress and engagement patterns.
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start mt-6">
+                                    <div class="flex-shrink-0">
+                                        <div
+                                            class="flex items-center justify-center h-10 w-10 rounded-full bg-secondary bg-opacity-10">
+                                            <i class="fas fa-chart-line text-secondary text-lg"></i>
+                                        </div>
+                                    </div>
+                                    <div class="ml-4">
+                                        <p class="text-base font-medium text-dark">Data-Driven Insights</p>
+                                        <p class="mt-1 text-sm text-gray-600">
+                                            Detailed analytics help parents and therapists understand progress across
+                                            motor skills, cognitive development, and emotional regulation.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section id="benefits" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="lg:text-center">
+                <h2 class="text-base text-primary font-semibold tracking-wide uppercase">How It Helps</h2>
+                <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-dark sm:text-4xl">
+                    Tangible Benefits for Children & Families
+                </p>
+                <p class="mt-4 max-w-2xl text-xl text-gray-600 lg:mx-auto">
+                    Autimagic transforms the therapy experience for all stakeholders.
+                </p>
+            </div>
+
+            <div class="mt-16">
+                <div class="space-y-10 md:space-y-0 md:grid md:grid-cols-2 md:gap-x-8 md:gap-y-10">
+                    <div
+                        class="feature-card relative bg-white p-6 rounded-lg shadow-md transition duration-300 ease-in-out">
+                        <div class="flex items-center">
+                            <div class="flex-shrink-0 bg-primary bg-opacity-10 p-3 rounded-full">
+                                <i class="fas fa-rupee-sign text-primary text-xl"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="text-lg leading-6 font-medium text-dark">85-90% Cost Savings</h3>
+                                <p class="mt-2 text-gray-600">
+                                    Traditional therapy can cost ₹50,000+ per year. Autimagic delivers comparable
+                                    results for just ₹5,000-7,000 annually.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div
+                        class="feature-card relative bg-white p-6 rounded-lg shadow-md transition duration-300 ease-in-out">
+                        <div class="flex items-center">
+                            <div class="flex-shrink-0 bg-secondary bg-opacity-10 p-3 rounded-full">
+                                <i class="fas fa-home text-secondary text-xl"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="text-lg leading-6 font-medium text-dark">Accessible At Home</h3>
+                                <p class="mt-2 text-gray-600">
+                                    No need for frequent clinic visits. Therapy happens in the child's comfortable home
+                                    environment with remote guidance from professionals.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div
+                        class="feature-card relative bg-white p-6 rounded-lg shadow-md transition duration-300 ease-in-out">
+                        <div class="flex items-center">
+                            <div class="flex-shrink-0 bg-accent bg-opacity-10 p-3 rounded-full">
+                                <i class="fas fa-gamepad text-accent text-xl"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="text-lg leading-6 font-medium text-dark">Gamified Engagement</h3>
+                                <p class="mt-2 text-gray-600">
+                                    94% of children using Autimagic show higher engagement than traditional therapy
+                                    methods, leading to better outcomes.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div
+                        class="feature-card relative bg-white p-6 rounded-lg shadow-md transition duration-300 ease-in-out">
+                        <div class="flex items-center">
+                            <div class="flex-shrink-0 bg-purple-500 bg-opacity-10 p-3 rounded-full">
+                                <i class="fas fa-chart-pie text-purple-500 text-xl"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="text-lg leading-6 font-medium text-dark">Objective Progress Tracking</h3>
+                                <p class="mt-2 text-gray-600">
+                                    Quantifiable data replaces subjective assessments, helping therapists make better
+                                    decisions and parents see real progress.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Target Audience -->
+            <div class="mt-20">
+                <div class="bg-white shadow rounded-lg overflow-hidden">
+                    <div class="px-6 py-8 sm:p-10">
+                        <div class="lg:text-center">
+                            <h2 class="text-base text-primary font-semibold tracking-wide uppercase">Who Benefits</h2>
+                            <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-dark sm:text-4xl">
+                                Designed for Everyone in the Autism Ecosystem
+                            </p>
+                        </div>
+
+                        <div class="mt-12">
+                            <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
+                                <div class="text-center">
+                                    <div
+                                        class="flex items-center justify-center h-16 w-16 mx-auto rounded-full bg-pastelBlue">
+                                        <i class="fas fa-child text-primary text-2xl"></i>
+                                    </div>
+                                    <h3 class="mt-6 text-lg font-medium text-dark">Children</h3>
+                                    <p class="mt-2 text-gray-600 text-sm">
+                                        Ages 3-12 with autism spectrum disorder who need engaging, effective therapy for
+                                        motor skills and cognitive development.
+                                    </p>
+                                </div>
+
+                                <div class="text-center">
+                                    <div
+                                        class="flex items-center justify-center h-16 w-16 mx-auto rounded-full bg-pastelGreen">
+                                        <i class="fas fa-user-friends text-secondary text-2xl"></i>
+                                    </div>
+                                    <h3 class="mt-6 text-lg font-medium text-dark">Parents</h3>
+                                    <p class="mt-2 text-gray-600 text-sm">
+                                        Families seeking affordable, accessible therapy options with clear progress
+                                        tracking and professional support.
+                                    </p>
+                                </div>
+
+                                <div class="text-center">
+                                    <div
+                                        class="flex items-center justify-center h-16 w-16 mx-auto rounded-full bg-pastelPurple">
+                                        <i class="fas fa-user-md text-purple-500 text-2xl"></i>
+                                    </div>
+                                    <h3 class="mt-6 text-lg font-medium text-dark">Therapists</h3>
+                                    <p class="mt-2 text-gray-600 text-sm">
+                                        Occupational therapists and specialists who want data-driven tools to enhance
+                                        their practice and serve more clients.
+                                    </p>
+                                </div>
+
+                                <div class="text-center">
+                                    <div
+                                        class="flex items-center justify-center h-16 w-16 mx-auto rounded-full bg-yellow-100">
+                                        <i class="fas fa-school text-yellow-500 text-2xl"></i>
+                                    </div>
+                                    <h3 class="mt-6 text-lg font-medium text-dark">Schools & Centers</h3>
+                                    <p class="mt-2 text-gray-600 text-sm">
+                                        Special education programs and therapy centers looking to scale their impact
+                                        with limited resources.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Market & Impact Section -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="lg:grid lg:grid-cols-2 lg:gap-8 lg:items-center">
+                <div>
+                    <h2 class="text-3xl leading-8 font-extrabold tracking-tight text-dark sm:text-4xl">
+                        Addressing a Critical Need
+                    </h2>
+                    <p class="mt-4 text-lg text-gray-600">
+                        Autism affects 1 in 100 children in India, yet therapy remains inaccessible for most families
+                        due to high costs and limited specialists.
+                    </p>
+                    <div class="mt-8">
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0">
+                                <div
+                                    class="flex items-center justify-center h-10 w-10 rounded-full bg-primary bg-opacity-10">
+                                    <i class="fas fa-exclamation-triangle text-primary"></i>
+                                </div>
+                            </div>
+                            <div class="ml-4">
+                                <p class="text-base font-medium text-dark">Therapy Access Crisis</p>
+                                <p class="mt-1 text-sm text-gray-600">
+                                    Over 70% of Indian children with autism receive no professional therapy due to cost
+                                    and availability barriers.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="flex items-start mt-6">
+                            <div class="flex-shrink-0">
+                                <div
+                                    class="flex items-center justify-center h-10 w-10 rounded-full bg-secondary bg-opacity-10">
+                                    <i class="fas fa-clock text-secondary"></i>
+                                </div>
+                            </div>
+                            <div class="ml-4">
+                                <p class="text-base font-medium text-dark">Early Intervention Gap</p>
+                                <p class="mt-1 text-sm text-gray-600">
+                                    The first 6 years are critical for autism therapy, yet diagnosis and treatment often
+                                    come too late.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="flex items-start mt-6">
+                            <div class="flex-shrink-0">
+                                <div
+                                    class="flex items-center justify-center h-10 w-10 rounded-full bg-accent bg-opacity-10">
+                                    <i class="fas fa-hand-holding-heart text-accent"></i>
+                                </div>
+                            </div>
+                            <div class="ml-4">
+                                <p class="text-base font-medium text-dark">Autimagic's Impact</p>
+                                <p class="mt-1 text-sm text-gray-600">
+                                    Our solution makes early intervention possible for thousands of families who
+                                    couldn't access care before.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-12 lg:mt-0">
+                    <div class="bg-gray-50 p-6 rounded-lg shadow-inner">
+                        <div class="text-center">
+                            <div class="text-5xl font-bold text-primary">1 in 100</div>
+                            <div class="text-gray-600 mt-2">Children in India have autism</div>
+                        </div>
+                        <div class="mt-8 grid grid-cols-2 gap-4">
+                            <div class="bg-white p-4 rounded-lg shadow text-center">
+                                <div class="text-3xl font-bold text-secondary">70%</div>
+                                <div class="text-gray-600 text-sm mt-1">Receive no therapy</div>
+                            </div>
+                            <div class="bg-white p-4 rounded-lg shadow text-center">
+                                <div class="text-3xl font-bold text-accent">₹50K+</div>
+                                <div class="text-gray-600 text-sm mt-1">Annual therapy cost</div>
+                            </div>
+                            <div class="bg-white p-4 rounded-lg shadow text-center">
+                                <div class="text-3xl font-bold text-purple-500">1:10,000</div>
+                                <div class="text-gray-600 text-sm mt-1">Therapist to child ratio</div>
+                            </div>
+                            <div class="bg-white p-4 rounded-lg shadow text-center">
+                                <div class="text-3xl font-bold text-primary">85%</div>
+                                <div class="text-gray-600 text-sm mt-1">Cost savings with Autimagic</div>
+                            </div>
+                        </div>
+                        <div class="mt-6 text-center">
+                            <a href="#contact"
+                                class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-full shadow-sm text-white bg-primary hover:bg-opacity-90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary transition">
+                                Join Our Mission
+                                <i class="fas fa-arrow-right ml-2"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="lg:text-center">
+                <h2 class="text-base text-primary font-semibold tracking-wide uppercase">Testimonials</h2>
+                <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-dark sm:text-4xl">
+                    What Parents & Therapists Say
+                </p>
+            </div>
+
+            <div class="mt-16">
+                <div class="space-y-16 lg:grid lg:grid-cols-3 lg:gap-x-8 lg:space-y-0">
+                    <div class="bg-white p-8 rounded-lg shadow-md">
+                        <div class="flex items-center">
+                            <div class="flex-shrink-0">
+                                <img class="h-12 w-12 rounded-full"
+                                    src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80"
+                                    alt="Parent testimonial">
+                            </div>
+                            <div class="ml-4">
+                                <div class="text-lg font-medium text-dark">Priya M.</div>
+                                <div class="text-secondary">Parent</div>
+                            </div>
+                        </div>
+                        <div class="mt-4">
+                            <p class="text-gray-600">
+                                "Autimagic has been life-changing for our family. My son looks forward to his therapy
+                                sessions now, and we've seen remarkable progress in just 3 months. The cost savings mean
+                                we can afford consistent therapy for the first time."
+                            </p>
+                        </div>
+                        <div class="mt-6 flex">
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star text-yellow-400 ml-1"></i>
+                            <i class="fas fa-star text-yellow-400 ml-1"></i>
+                            <i class="fas fa-star text-yellow-400 ml-1"></i>
+                            <i class="fas fa-star text-yellow-400 ml-1"></i>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-8 rounded-lg shadow-md">
+                        <div class="flex items-center">
+                            <div class="flex-shrink-0">
+                                <img class="h-12 w-12 rounded-full"
+                                    src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80"
+                                    alt="Therapist testimonial">
+                            </div>
+                            <div class="ml-4">
+                                <div class="text-lg font-medium text-dark">Dr. Rajesh K.</div>
+                                <div class="text-secondary">Pediatric Therapist</div>
+                            </div>
+                        </div>
+                        <div class="mt-4">
+                            <p class="text-gray-600">
+                                "As a therapist, I appreciate the objective data Autimagic provides. It helps me make
+                                better treatment decisions and demonstrate progress to parents. The engagement levels
+                                are unlike anything I've seen with traditional methods."
+                            </p>
+                        </div>
+                        <div class="mt-6 flex">
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star text-yellow-400 ml-1"></i>
+                            <i class="fas fa-star text-yellow-400 ml-1"></i>
+                            <i class="fas fa-star text-yellow-400 ml-1"></i>
+                            <i class="fas fa-star text-yellow-400 ml-1"></i>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-8 rounded-lg shadow-md">
+                        <div class="flex items-center">
+                            <div class="flex-shrink-0">
+                                <img class="h-12 w-12 rounded-full"
+                                    src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=688&q=80"
+                                    alt="School administrator testimonial">
+                            </div>
+                            <div class="ml-4">
+                                <div class="text-lg font-medium text-dark">Ananya S.</div>
+                                <div class="text-secondary">Special Education Director</div>
+                            </div>
+                        </div>
+                        <div class="mt-4">
+                            <p class="text-gray-600">
+                                "We've implemented Autimagic across our network of schools. The ability to scale quality
+                                therapy while reducing costs has been transformative. Teachers report better outcomes
+                                and parents appreciate the transparency."
+                            </p>
+                        </div>
+                        <div class="mt-6 flex">
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star text-yellow-400 ml-1"></i>
+                            <i class="fas fa-star text-yellow-400 ml-1"></i>
+                            <i class="fas fa-star text-yellow-400 ml-1"></i>
+                            <i class="fas fa-star text-yellow-400 ml-1"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="lg:text-center">
+                <h2 class="text-base text-primary font-semibold tracking-wide uppercase">Our Team</h2>
+                <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-dark sm:text-4xl">
+                    Passionate Innovators Making a Difference
+                </p>
+            </div>
+
+            <div class="mt-16">
+                <div class="space-y-12 lg:grid lg:grid-cols-3 lg:gap-x-8 lg:gap-y-12 lg:space-y-0">
+                    <div class="text-center">
+                        <div class="mx-auto h-32 w-32 rounded-full overflow-hidden shadow-lg">
+                            <img class="h-full w-full object-cover"
+                                src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80"
+                                alt="Founder profile">
+                        </div>
+                        <div class="mt-4">
+                            <h3 class="text-lg font-medium text-dark">Dr. Neha Patel</h3>
+                            <p class="text-secondary">Co-Founder & CEO</p>
+                            <p class="mt-2 text-gray-600 text-sm">
+                                Pediatric therapist with 15+ years experience and mother to a child with autism. Leads
+                                product development and clinical research.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="text-center">
+                        <div class="mx-auto h-32 w-32 rounded-full overflow-hidden shadow-lg">
+                            <img class="h-full w-full object-cover"
+                                src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80"
+                                alt="Founder profile">
+                        </div>
+                        <div class="mt-4">
+                            <h3 class="text-lg font-medium text-dark">Rahul Sharma</h3>
+                            <p class="text-secondary">Co-Founder & CTO</p>
+                            <p class="mt-2 text-gray-600 text-sm">
+                                AI engineer with expertise in adaptive learning systems. Previously led healthtech
+                                projects at major tech companies.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="text-center">
+                        <div class="mx-auto h-32 w-32 rounded-full overflow-hidden shadow-lg">
+                            <img class="h-full w-full object-cover"
+                                src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80"
+                                alt="Advisor profile">
+                        </div>
+                        <div class="mt-4">
+                            <h3 class="text-lg font-medium text-dark">Dr. Amit Joshi</h3>
+                            <p class="text-secondary">Medical Advisor</p>
+                            <p class="mt-2 text-gray-600 text-sm">
+                                Renowned pediatric neurologist and autism researcher. Ensures clinical validity of all
+                                therapy protocols.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Advisors & Partners -->
+            <div class="mt-20">
+                <div class="lg:text-center">
+                    <h3 class="text-lg font-medium text-dark">Our Advisors & Partners</h3>
+                </div>
+                <div class="mt-8 grid grid-cols-2 gap-8 md:grid-cols-4 lg:grid-cols-6">
+                    <div class="col-span-1 flex justify-center items-center">
+                        <img class="h-12" src="https://via.placeholder.com/150x60?text=Autism+Society"
+                            alt="Partner logo">
+                    </div>
+                    <div class="col-span-1 flex justify-center items-center">
+                        <img class="h-12" src="https://via.placeholder.com/150x60?text=HealthTech+India"
+                            alt="Partner logo">
+                    </div>
+                    <div class="col-span-1 flex justify-center items-center">
+                        <img class="h-12" src="https://via.placeholder.com/150x60?text=Innovate+For+Good"
+                            alt="Partner logo">
+                    </div>
+                    <div class="col-span-1 flex justify-center items-center">
+                        <img class="h-12" src="https://via.placeholder.com/150x60?text=Pediatric+Alliance"
+                            alt="Partner logo">
+                    </div>
+                    <div class="col-span-1 flex justify-center items-center">
+                        <img class="h-12" src="https://via.placeholder.com/150x60?text=Special+Schools"
+                            alt="Partner logo">
+                    </div>
+                    <div class="col-span-1 flex justify-center items-center">
+                        <img class="h-12" src="https://via.placeholder.com/150x60?text=Tech+For+Impact"
+                            alt="Partner logo">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Journey Timeline -->
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="lg:text-center">
+                <h2 class="text-base text-primary font-semibold tracking-wide uppercase">Our Journey</h2>
+                <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-dark sm:text-4xl">
+                    From Concept to Impact
+                </p>
+            </div>
+
+            <div class="mt-16">
+                <div class="relative">
+                    <div
+                        class="hidden md:block absolute top-0 left-1/2 h-full w-0.5 bg-gray-200 transform -translate-x-1/2">
+                    </div>
+
+                    <div class="space-y-16">
+                        <div class="timeline-item relative">
+                            <div class="md:flex md:items-center md:justify-center">
+                                <div class="md:w-1/2 md:pr-8 md:text-right">
+                                    <div class="text-sm font-semibold text-primary">Q1 2021</div>
+                                    <h3 class="text-xl font-bold text-dark mt-1">Concept Development</h3>
+                                    <p class="mt-2 text-gray-600">
+                                        Initial research and prototype development based on clinical needs identified by
+                                        our founders.
+                                    </p>
+                                </div>
+                                <div class="hidden md:block md:w-1/2"></div>
+                            </div>
+                            <div class="md:absolute md:top-0 md:left-1/2 md:transform md:-translate-x-1/2 mt-4 md:mt-0">
+                                <div
+                                    class="flex items-center justify-center h-12 w-12 rounded-full bg-primary text-white shadow-lg">
+                                    <i class="fas fa-lightbulb"></i>
+                                </div>
+                            </div>
+                            <div class="md:flex md:items-center md:justify-center md:mt-0 mt-4">
+                                <div class="hidden md:block md:w-1/2"></div>
+                                <div class="md:w-1/2 md:pl-8">
+                                    <div class="bg-white p-6 rounded-lg shadow-md">
+                                        <img class="w-full h-auto rounded"
+                                            src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+                                            alt="Early prototype">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="timeline-item relative">
+                            <div class="md:flex md:items-center md:justify-center">
+                                <div class="md:w-1/2 md:pr-8 md:text-right">
+                                    <div class="bg-white p-6 rounded-lg shadow-md">
+                                        <img class="w-full h-auto rounded"
+                                            src="https://images.unsplash.com/photo-1551269901-5c5e14c25df7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80"
+                                            alt="Pilot testing">
+                                    </div>
+                                </div>
+                                <div class="hidden md:block md:w-1/2"></div>
+                            </div>
+                            <div class="md:absolute md:top-0 md:left-1/2 md:transform md:-translate-x-1/2 mt-4 md:mt-0">
+                                <div
+                                    class="flex items-center justify-center h-12 w-12 rounded-full bg-secondary text-white shadow-lg">
+                                    <i class="fas fa-flask"></i>
+                                </div>
+                            </div>
+                            <div class="md:flex md:items-center md:justify-center md:mt-0 mt-4">
+                                <div class="hidden md:block md:w-1/2"></div>
+                                <div class="md:w-1/2 md:pl-8">
+                                    <div class="text-sm font-semibold text-secondary">Q3 2021</div>
+                                    <h3 class="text-xl font-bold text-dark mt-1">Pilot Testing</h3>
+                                    <p class="mt-2 text-gray-600">
+                                        Initial clinical trials with 50 children showed 87% engagement rate and
+                                        measurable motor skill improvements.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="timeline-item relative">
+                            <div class="md:flex md:items-center md:justify-center">
+                                <div class="md:w-1/2 md:pr-8 md:text-right">
+                                    <div class="text-sm font-semibold text-accent">Q1 2022</div>
+                                    <h3 class="text-xl font-bold text-dark mt-1">First Deployment</h3>
+                                    <p class="mt-2 text-gray-600">
+                                        Launched in 10 therapy centers across Mumbai with overwhelmingly positive
+                                        feedback from therapists and parents.
+                                    </p>
+                                </div>
+                                <div class="hidden md:block md:w-1/2"></div>
+                            </div>
+                            <div class="md:absolute md:top-0 md:left-1/2 md:transform md:-translate-x-1/2 mt-4 md:mt-0">
+                                <div
+                                    class="flex items-center justify-center h-12 w-12 rounded-full bg-accent text-white shadow-lg">
+                                    <i class="fas fa-rocket"></i>
+                                </div>
+                            </div>
+                            <div class="md:flex md:items-center md:justify-center md:mt-0 mt-4">
+                                <div class="hidden md:block md:w-1/2"></div>
+                                <div class="md:w-1/2 md:pl-8">
+                                    <div class="bg-white p-6 rounded-lg shadow-md">
+                                        <img class="w-full h-auto rounded"
+                                            src="https://images.unsplash.com/photo-1521791055366-0d553872125f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80"
+                                            alt="First deployment">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="timeline-item relative">
+                            <div class="md:flex md:items-center md:justify-center">
+                                <div class="md:w-1/2 md:pr-8 md:text-right">
+                                    <div class="bg-white p-6 rounded-lg shadow-md">
+                                        <img class="w-full h-auto rounded"
+                                            src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+                                            alt="National expansion">
+                                    </div>
+                                </div>
+                                <div class="hidden md:block md:w-1/2"></div>
+                            </div>
+                            <div class="md:absolute md:top-0 md:left-1/2 md:transform md:-translate-x-1/2 mt-4 md:mt-0">
+                                <div
+                                    class="flex items-center justify-center h-12 w-12 rounded-full bg-purple-500 text-white shadow-lg">
+                                    <i class="fas fa-globe-asia"></i>
+                                </div>
+                            </div>
+                            <div class="md:flex md:items-center md:justify-center md:mt-0 mt-4">
+                                <div class="hidden md:block md:w-1/2"></div>
+                                <div class="md:w-1/2 md:pl-8">
+                                    <div class="text-sm font-semibold text-purple-500">Present</div>
+                                    <h3 class="text-xl font-bold text-dark mt-1">National Expansion</h3>
+                                    <p class="mt-2 text-gray-600">
+                                        Currently serving 1,200+ children across India with plans to expand to 5,000+ by
+                                        end of year.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Demo Section -->
+    <section id="demo" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="lg:text-center">
+                <h2 class="text-base text-primary font-semibold tracking-wide uppercase">See It In Action</h2>
+                <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-dark sm:text-4xl">
+                    Watch Autimagic Transform Therapy
+                </p>
+                <p class="mt-4 max-w-2xl text-xl text-gray-600 lg:mx-auto">
+                    Our 2-minute demo shows how the system works and the impact it creates.
+                </p>
+            </div>
+
+            <div class="mt-16">
+                <div class="aspect-w-16 aspect-h-9 rounded-xl shadow-xl overflow-hidden">
+                    <div class="bg-gray-200 w-full h-96 flex items-center justify-center">
+                        <div class="text-center">
+                            <i class="fas fa-play-circle text-6xl text-primary opacity-50"></i>
+                            <p class="mt-4 text-gray-600">Product Demo Video</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-16 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+                <div class="bg-gray-50 p-6 rounded-lg">
+                    <div class="flex items-center">
+                        <div class="flex-shrink-0 bg-primary bg-opacity-10 p-3 rounded-full">
+                            <i class="fas fa-mobile-alt text-primary text-xl"></i>
+                        </div>
+                        <div class="ml-4">
+                            <h3 class="text-lg font-medium text-dark">Mobile App Demo</h3>
+                            <p class="mt-1 text-sm text-gray-600">
+                                Experience our gamified therapy interface designed specifically for children with
+                                autism.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-gray-50 p-6 rounded-lg">
+                    <div class="flex items-center">
+                        <div class="flex-shrink-0 bg-secondary bg-opacity-10 p-3 rounded-full">
+                            <i class="fas fa-chart-bar text-secondary text-xl"></i>
+                        </div>
+                        <div class="ml-4">
+                            <h3 class="text-lg font-medium text-dark">Analytics Dashboard</h3>
+                            <p class="mt-1 text-sm text-gray-600">
+                                See how therapists and parents track progress with our data visualization tools.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-gray-50 p-6 rounded-lg">
+                    <div class="flex items-center">
+                        <div class="flex-shrink-0 bg-accent bg-opacity-10 p-3 rounded-full">
+                            <i class="fas fa-child text-accent text-xl"></i>
+                        </div>
+                        <div class="ml-4">
+                            <h3 class="text-lg font-medium text-dark">Real Therapy Session</h3>
+                            <p class="mt-1 text-sm text-gray-600">
+                                Watch a child using Autimagic and see the engagement firsthand.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 bg-gradient-to-r from-primary to-secondary">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="lg:text-center">
+                <h2 class="text-3xl leading-8 font-extrabold tracking-tight text-white sm:text-4xl">
+                    Ready to Transform Autism Therapy?
+                </h2>
+                <p class="mt-4 max-w-2xl text-xl text-white opacity-90 lg:mx-auto">
+                    Join our growing community of parents, therapists, and schools bringing affordable, effective
+                    therapy to children who need it.
+                </p>
+                <div class="mt-8 flex flex-col sm:flex-row justify-center space-y-3 sm:space-y-0 sm:space-x-4">
+                    <a href="#contact"
+                        class="flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-full text-primary bg-white hover:bg-opacity-90 md:py-4 md:text-lg md:px-10 transition">
+                        Get Started
+                    </a>
+                    <a href="#demo"
+                        class="flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-full text-white bg-transparent border-white hover:bg-white hover:bg-opacity-10 md:py-4 md:text-lg md:px-10 transition">
+                        Watch Demo
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="lg:grid lg:grid-cols-2 lg:gap-8">
+                <div>
+                    <h2 class="text-3xl leading-8 font-extrabold tracking-tight text-dark sm:text-4xl">
+                        Get In Touch
+                    </h2>
+                    <p class="mt-4 text-lg text-gray-600">
+                        Whether you're a parent, therapist, school, or investor, we'd love to hear from you.
+                    </p>
+                    <div class="mt-8">
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0">
+                                <div
+                                    class="flex items-center justify-center h-10 w-10 rounded-full bg-primary bg-opacity-10">
+                                    <i class="fas fa-map-marker-alt text-primary"></i>
+                                </div>
+                            </div>
+                            <div class="ml-4">
+                                <p class="text-base font-medium text-dark">Our Office</p>
+                                <p class="mt-1 text-sm text-gray-600">
+                                    HealthTech Innovation Hub, Mumbai, India
+                                </p>
+                            </div>
+                        </div>
+                        <div class="flex items-start mt-6">
+                            <div class="flex-shrink-0">
+                                <div
+                                    class="flex items-center justify-center h-10 w-10 rounded-full bg-secondary bg-opacity-10">
+                                    <i class="fas fa-envelope text-secondary"></i>
+                                </div>
+                            </div>
+                            <div class="ml-4">
+                                <p class="text-base font-medium text-dark">Email Us</p>
+                                <p class="mt-1 text-sm text-gray-600">
+                                    hello@autimagic.com
+                                </p>
+                            </div>
+                        </div>
+                        <div class="flex items-start mt-6">
+                            <div class="flex-shrink-0">
+                                <div
+                                    class="flex items-center justify-center h-10 w-10 rounded-full bg-accent bg-opacity-10">
+                                    <i class="fas fa-phone-alt text-accent"></i>
+                                </div>
+                            </div>
+                            <div class="ml-4">
+                                <p class="text-base font-medium text-dark">Call Us</p>
+                                <p class="mt-1 text-sm text-gray-600">
+                                    +91 98765 43210 (10AM - 6PM IST)
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-8">
+                        <h3 class="text-lg font-medium text-dark">Follow Us</h3>
+                        <div class="mt-4 flex space-x-6">
+                            <a href="#" class="text-gray-500 hover:text-primary transition">
+                                <i class="fab fa-facebook-f text-xl"></i>
+                            </a>
+                            <a href="#" class="text-gray-500 hover:text-primary transition">
+                                <i class="fab fa-twitter text-xl"></i>
+                            </a>
+                            <a href="#" class="text-gray-500 hover:text-primary transition">
+                                <i class="fab fa-linkedin-in text-xl"></i>
+                            </a>
+                            <a href="#" class="text-gray-500 hover:text-primary transition">
+                                <i class="fab fa-instagram text-xl"></i>
+                            </a>
+                            <a href="#" class="text-gray-500 hover:text-primary transition">
+                                <i class="fab fa-youtube text-xl"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-12 lg:mt-0">
+                    <div class="bg-gray-50 p-6 rounded-lg shadow-md">
+                        <h3 class="text-lg font-medium text-dark mb-6">Send Us a Message</h3>
+                        <form>
+                            <div class="grid grid-cols-1 gap-6">
+                                <div>
+                                    <label for="name" class="block text-sm font-medium text-gray-700">Name</label>
+                                    <input type="text" id="name"
+                                        class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-primary focus:border-primary">
+                                </div>
+                                <div>
+                                    <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+                                    <input type="email" id="email"
+                                        class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-primary focus:border-primary">
+                                </div>
+                                <div>
+                                    <label for="phone" class="block text-sm font-medium text-gray-700">Phone</label>
+                                    <input type="text" id="phone"
+                                        class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-primary focus:border-primary">
+                                </div>
+                                <div>
+                                    <label for="interest" class="block text-sm font-medium text-gray-700">I'm interested
+                                        in</label>
+                                    <select id="interest"
+                                        class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-primary focus:border-primary">
+                                        <option>For my child</option>
+                                        <option>For my therapy center</option>
+                                        <option>For my school</option>
+                                        <option>Investment opportunity</option>
+                                        <option>Partnership</option>
+                                        <option>Other</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label for="message" class="block text-sm font-medium text-gray-700">Message</label>
+                                    <textarea id="message" rows="4"
+                                        class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-primary focus:border-primary"></textarea>
+                                </div>
+                                <div>
+                                    <button type="submit"
+                                        class="w-full flex justify-center py-3 px-4 border border-transparent rounded-full shadow-sm text-sm font-medium text-white bg-primary hover:bg-opacity-90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary transition">
+                                        Send Message
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="lg:text-center">
+                <h2 class="text-base text-primary font-semibold tracking-wide uppercase">FAQs</h2>
+                <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-dark sm:text-4xl">
+                    Common Questions
+                </p>
+            </div>
+
+            <div class="mt-12">
+                <div class="space-y-6">
+                    <div class="bg-white p-6 rounded-lg shadow-md">
+                        <h3 class="text-lg font-medium text-dark">How is Autimagic different from traditional autism
+                            therapy?</h3>
+                        <p class="mt-2 text-gray-600">
+                            Autimagic combines the benefits of sensory play therapy with AI-powered personalization and
+                            real-time feedback. Our system is 85-90% more affordable, can be used at home with remote
+                            therapist guidance, and provides objective data to track progress that traditional methods
+                            can't match.
+                        </p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-md">
+                        <h3 class="text-lg font-medium text-dark">What age range is Autimagic designed for?</h3>
+                        <p class="mt-2 text-gray-600">
+                            Our system is optimized for children ages 3-12 on the autism spectrum. The adaptive
+                            difficulty levels make it suitable for a wide range of developmental stages within this age
+                            group.
+                        </p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-md">
+                        <h3 class="text-lg font-medium text-dark">Do I need any special training to use Autimagic with
+                            my child?</h3>
+                        <p class="mt-2 text-gray-600">
+                            No special training is required. The system includes guided tutorials and the mobile app
+                            provides step-by-step instructions for each therapy session. We also offer free onboarding
+                            support for all families.
+                        </p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-md">
+                        <h3 class="text-lg font-medium text-dark">How does the pricing work?</h3>
+                        <p class="mt-2 text-gray-600">
+                            We offer flexible pricing options: a one-time purchase of the smart bongos device (₹15,000)
+                            with optional subscription for premium app features (₹500/month), or a complete rental
+                            package (₹1,500/month) that includes the device and all features. Therapy centers and
+                            schools receive volume discounts.
+                        </p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-md">
+                        <h3 class="text-lg font-medium text-dark">Is Autimagic clinically validated?</h3>
+                        <p class="mt-2 text-gray-600">
+                            Yes. Our pilot studies with 200+ children showed statistically significant improvements in
+                            motor skills, attention span, and emotional regulation. We're currently conducting larger
+                            clinical trials and have published our initial findings in peer-reviewed journals.
+                        </p>
+                    </div>
+                </div>
+                <div class="mt-8 text-center">
+                    <a href="#contact"
+                        class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-full shadow-sm text-white bg-primary hover:bg-opacity-90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary transition">
+                        Have more questions? Contact us
+                        <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white pt-12 pb-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-sm font-semibold text-gray-300 tracking-wider uppercase">Product</h3>
+                    <div class="mt-4 space-y-4">
+                        <a href="#solution" class="text-base text-gray-400 hover:text-white block">Features</a>
+                        <a href="#demo" class="text-base text-gray-400 hover:text-white block">Demo</a>
+                        <a href="#" class="text-base text-gray-400 hover:text-white block">Pricing</a>
+                        <a href="#" class="text-base text-gray-400 hover:text-white block">For Schools</a>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-sm font-semibold text-gray-300 tracking-wider uppercase">Company</h3>
+                    <div class="mt-4 space-y-4">
+                        <a href="#about" class="text-base text-gray-400 hover:text-white block">About</a>
+                        <a href="#team" class="text-base text-gray-400 hover:text-white block">Team</a>
+                        <a href="#" class="text-base text-gray-400 hover:text-white block">Careers</a>
+                        <a href="#" class="text-base text-gray-400 hover:text-white block">Press</a>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-sm font-semibold text-gray-300 tracking-wider uppercase">Resources</h3>
+                    <div class="mt-4 space-y-4">
+                        <a href="#" class="text-base text-gray-400 hover:text-white block">Blog</a>
+                        <a href="#" class="text-base text-gray-400 hover:text-white block">Research</a>
+                        <a href="#" class="text-base text-gray-400 hover:text-white block">Help Center</a>
+                        <a href="#" class="text-base text-gray-400 hover:text-white block">Webinars</a>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-sm font-semibold text-gray-300 tracking-wider uppercase">Legal</h3>
+                    <div class="mt-4 space-y-4">
+                        <a href="#" class="text-base text-gray-400 hover:text-white block">Privacy</a>
+                        <a href="#" class="text-base text-gray-400 hover:text-white block">Terms</a>
+                        <a href="#" class="text-base text-gray-400 hover:text-white block">Cookie Policy</a>
+                        <a href="#" class="text-base text-gray-400 hover:text-white block">Patents</a>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-12 border-t border-gray-700 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <div class="flex items-center">
+                    <i class="fas fa-magic text-primary text-xl mr-2"></i>
+                    <span class="text-xl font-bold text-white">Autimagic</span>
+                </div>
+                <p class="mt-4 md:mt-0 text-base text-gray-400">
+                    &copy; 2023 Autimagic Technologies. All rights reserved.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function () {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    // Close mobile menu if open
+                    document.getElementById('mobile-menu').classList.add('hidden');
+                }
+            });
+        });
+
+        // Form submission handling
+        const contactForm = document.querySelector('#contact form');
+        if (contactForm) {
+            contactForm.addEventListener('submit', function (e) {
+                e.preventDefault();
+                // Here you would typically send the form data to your server
+                alert('Thank you for your message! We will get back to you soon.');
+                this.reset();
+            });
+        }
+
+        // Animate stats counters
+        function animateValue(id, start, end, duration) {
+            const obj = document.getElementById(id);
+            if (!obj) return;
+
+            let startTimestamp = null;
+            const step = (timestamp) => {
+                if (!startTimestamp) startTimestamp = timestamp;
+                const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                obj.innerHTML = Math.floor(progress * (end - start) + start);
+                if (progress < 1) {
+                    window.requestAnimationFrame(step);
+                }
+            };
+            window.requestAnimationFrame(step);
+        }
+
+        // Initialize counters when stats section is in view
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateValue('stat-1', 0, 85, 2000);
+                    animateValue('stat-2', 0, 10000, 2000);
+                    animateValue('stat-3', 0, 94, 2000);
+                    animateValue('stat-4', 0, 50, 2000);
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        const statsSection = document.querySelector('.bg-white.py-12');
+        if (statsSection) {
+            observer.observe(statsSection);
+        }
+    </script>
+</body>
+
+</html>
